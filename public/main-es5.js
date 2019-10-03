@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- app.component.html -->\n<app-nav></app-nav>\n\n<!--/header-->\n<div class=\"color-border\"></div>\n<app-content></app-content>\n<div class=\"color-border\"></div>\n<app-footer></app-footer>\n"
+module.exports = "<!-- app.component.html -->\n<app-nav></app-nav>\n<div class=\"pink-border\"></div>\n<app-content></app-content>\n<div class=\"pink-border\"></div>\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ module.exports = "<div \n    *ngIf=\"employee\" \n    class=\"center\">\n    <h2
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"center\">\n  <h2>Employees </h2>\n  <p class=\"lead\">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed\n    eros tristique bibendum. Nunc quis semper sem.<br />\n    Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.\n  </p>\n</div>\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n        <input \n          class=\"form-control\" \n          id=\"EmployeeSearch\" \n          name=\"EmployeeSearch\" \n          type=\"text\" \n          placeholder=\"Search Employees by Full Name or Position\"\n          (keyup)=\"onEmployeeSearchKeyUP($event)\"/><br />\n      <div class=\"table-responsive\">\n        <table class=\"table table-condensed table-hover\">\n          <thead>\n            <tr>\n              <th>Full Name</th>\n              <th>Address</th>\n              <th>Phone Number</th>\n              <th>Position</th>\n              <th>Hire Date</th>\n            </tr>\n          </thead>\n          <tbody *ngIf=\"employees\">\n            <tr \n              *ngFor=\"let emp of filteredEmployees\"\n              (click) =\"routeToEmployeeDetails(emp._id)\"\n            >\n              <td><b>{{ emp.FirstName }} {{ emp.LastName }} </b></td>\n              <td>\n                {{ emp.AddressStreet }}, {{ emp.AddressCity }},\n                {{ emp.AddressState }}, {{ emp.AddressZip }}\n              </td>\n              <td>{{ emp.PhoneNum }}</td>\n              <td>{{ emp.Position.PositionName }}</td>\n              <td>{{ emp.HireDate | date: \"longDate\" }}</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <!-- PositionsComponent {{ employees | json }} -->\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"center\">\n  <h2>Employees</h2>\n  <p class=\"lead\">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed\n    eros tristique bibendum. Nunc quis semper sem.<br />\n    Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.\n  </p>    \n</div> \n\n  \n  \n  <mat-form-field>    \n    <input \n      matInput \n      placeholder=\"Filter\"\n      (keyup)=\"applyFilter($event.target.value)\" >\n  </mat-form-field>\n\n  <table \n      mat-table \n      [dataSource]=\"final\" \n      matSort \n      class=\"mat-elevation-z8\" \n      (matSortChange)=\"sortData($event)\"\n      >\n\n        <!--- Note that these columns can be defined in any order.\n              The actual rendered columns are set as a property on the row definition\" -->\n      \n        <!-- Name Column -->\n        <ng-container matColumnDef=\"FullName\">\n          <th mat-header-cell mat-sort-header  *matHeaderCellDef > Full Name </th>\n          <td \n            mat-cell *matCellDef=\"let employee\"\n            (click)=\"routeToEmployeeDetails(employee._id)\"\n          > {{ employee.FirstName }} {{ employee.LastName }} </td>\n        </ng-container>\n      \n        <!-- Address Column -->\n        <ng-container matColumnDef=\"AddressStreet\">\n          <th mat-header-cell mat-sort-header *matHeaderCellDef > Address </th>\n          <td \n            mat-cell *matCellDef=\"let employee\"\n            (click)=\"routeToEmployeeDetails(employee._id)\">\n             {{ employee.AddressStreet }}, {{ employee.AddressCity }},\n              {{ employee.AddressState }}, {{ employee.AddressZip }} </td>\n        </ng-container>\n\n         <!-- Position Column -->\n         <ng-container matColumnDef=\"PositionName\">\n            <th mat-header-cell mat-sort-header *matHeaderCellDef > Position </th>\n            <td \n              mat-cell *matCellDef=\"let employee\"\n              (click)=\"routeToEmployeeDetails(employee._id)\">\n               {{ employee.Position.PositionName }} </td>\n          </ng-container>\n      \n        <!-- Phone Column -->\n        <ng-container matColumnDef=\"PhoneNum\">\n          <th mat-header-cell mat-sort-header *matHeaderCellDef> Phone Number </th>\n          <td \n            mat-cell *matCellDef=\"let employee\"\n            (click)=\"routeToEmployeeDetails(employee._id)\">\n            {{employee.PhoneNum}} </td>\n        </ng-container>\n      \n        <!-- Hire Date Column -->\n        <ng-container matColumnDef=\"HireDate\">\n          <th mat-header-cell mat-sort-header *matHeaderCellDef> Hire Date </th>\n          <td \n          mat-cell *matCellDef=\"let employee\"\n          (click)=\"routeToEmployeeDetails(employee._id)\"> \n            {{employee.HireDate | date: \"longDate\"}} </td>\n        </ng-container>\n      \n        <tr mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: columnsToDisplay;\"></tr>\n      </table>\n\n      <mat-paginator [length]=\"numEmployees\"\n              [pageSize]=\"sizeChunk\"\n              [pageSizeOptions]=\"[5, 10, 25, 50, 100]\"\n              (page)=\"pageChanged($event)\"\n              >\n\n      </mat-paginator>\n"
 
 /***/ }),
 
@@ -74,7 +74,7 @@ module.exports = "<div class=\"center\">\n  <h2>Employees </h2>\n  <p class=\"le
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer id=\"footer\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        Copyright &copy; 2019 Ania M. Pienio WEB422. Design by\n        <a href=\"http://www.templategarden.com\" rel=\"nofollow\"\n          >TemplateGarden</a\n        >\n      </div>\n      <div class=\"col-md-6\">\n        <div class=\"follow-us\">\n          <a class=\"fa fa-facebook social-icon\" href=\"#\"></a>\n          <a class=\"fa fa-twitter social-icon\" href=\"#\"></a>\n          <a class=\"fa fa-linkedin social-icon\" href=\"#\"></a>\n          <a class=\"fa fa-google-plus social-icon\" href=\"#\"></a>\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n<!--/#footer-->\n"
+module.exports = "<footer id=\"footer\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        Copyright &copy; 2019 Ania M. Pienio \n        <a href=\"http://www.templategarden.com\" rel=\"nofollow\"\n          >Design</a\n        >\n      </div>\n      <div class=\"col-md-6\">\n        <div class=\"follow-us\">\n          <a class=\"fa fa-facebook social-icon\" href=\"#\"></a>\n          <a class=\"fa fa-twitter social-icon\" href=\"#\"></a>\n          <a class=\"fa fa-linkedin social-icon\" href=\"#\"></a>\n          <a class=\"fa fa-google-plus social-icon\" href=\"#\"></a>\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n<!--/#footer-->\n"
 
 /***/ }),
 
@@ -85,7 +85,7 @@ module.exports = "<footer id=\"footer\">\n  <div class=\"container\">\n    <div 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section id=\"main-slider\" class=\"no-margin\">\n  <div class=\"carousel slide\">\n    <ol class=\"carousel-indicators\">\n      <li data-target=\"#main-slider\" data-slide-to=\"0\" class=\"active\"></li>\n      <li data-target=\"#main-slider\" data-slide-to=\"1\"></li>\n      <li data-target=\"#main-slider\" data-slide-to=\"2\"></li>\n    </ol>\n    <div class=\"carousel-inner\">\n      <div\n        class=\"item active\"\n        style=\"background-image: url(/assets/images/slider/bg1.jpg)\"\n      >\n        <div class=\"container\">\n          <div class=\"row slide-margin\">\n            <div class=\"col-sm-12\">\n              <div class=\"carousel-content\">\n                <h1>\n                  Welcome to\n                  <span class=\"logo\"\n                    ><i class=\"fa fa-cloud\"></i> API Demo\n                  </span>\n                </h1>\n                <h2>\n                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed\n                  diam nonummy nibh euismod tincidunt laoreet\n                </h2>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--/.item-->\n\n      <div class=\"item\" style=\"background-image: url(/assets/images/slider/bg2.jpg)\">\n        <div class=\"container\">\n          <div class=\"row slide-margin\">\n            <div class=\"col-sm-12\">\n              <div class=\"carousel-content\">\n                <h1>Typi non habent claritatem insitam</h1>\n                <h2>\n                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed\n                  diam nonummy nibh euismod tincidunt laoreet\n                </h2>\n                <a class=\"btn-slide\" href=\"about-us.html\">Read More</a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--/.item-->\n\n      <div class=\"item\" style=\"background-image: url(/assets/images/slider/bg3.jpg)\">\n        <div class=\"container\">\n          <div class=\"row slide-margin\">\n            <div class=\"col-sm-12\">\n              <div class=\"carousel-content\">\n                <h1>Mirum est notare quam littera gothica</h1>\n                <h2>\n                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed\n                  diam nonummy nibh euismod tincidunt laoreet\n                </h2>\n                <a class=\"btn-slide\" href=\"about-us.html\">Read More</a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--/.item-->\n    </div>\n    <!--/.carousel-inner-->\n  </div>\n  <!--/.carousel-->\n  <a class=\"prev hidden-xs\" href=\"#main-slider\" data-slide=\"prev\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>\n  <a class=\"next hidden-xs\" href=\"#main-slider\" data-slide=\"next\">\n    <i class=\"fa fa-chevron-right\"></i>\n  </a>\n</section>\n<!--/#main-slider-->\n\n<div class=\"color-border\"></div>\n<section id=\"feature\">\n  <div class=\"container\">\n    <div class=\"center\">\n      <h2>Featured Services</h2>\n      <p class=\"lead\">\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio\n        sed eros tristique bibendum. Nunc quis semper sem.<br />\n        Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.\n      </p>\n    </div>\n    <div class=\"row\">\n      <div class=\"features\">\n        <div class=\"col-md-6 col-sm-6\">\n          <div class=\"feature-wrap\">\n            <i class=\"fa fa-desktop\"></i>\n            <h2>Employees</h2>\n            <h3>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non\n              odio sed eros tristique.\n            </h3>\n          </div>\n        </div>\n        <!--/.col-md-4-->\n\n        <div class=\"col-md-6 col-sm-6\">\n          <div class=\"feature-wrap\">\n            <i class=\"fa fa-cogs\"></i>\n            <h2>Positions</h2>\n            <h3>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non\n              odio sed eros tristique.\n            </h3>\n          </div>\n        </div>\n        <!--/.col-md-4-->\n\n        <!-- <div class=\"col-md-4 col-sm-6\">\n                <div class=\"feature-wrap\"> <i class=\"fa fa-rocket\"></i>\n                  <h2>Brand &amp; Identity</h2>\n                  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed eros tristique.</h3>\n                </div>\n              </div> -->\n        <!--/.col-md-4-->\n      </div>\n      <!--/.services-->\n    </div>\n    <!--/.row-->\n  </div>\n  <!--/.container-->\n</section>\n<!--/#feature-->\n"
+module.exports = "<section id=\"main-slider\" class=\"no-margin\">\n  <div class=\"carousel slide\">\n    <ol class=\"carousel-indicators\">\n      <li data-target=\"#main-slider\" data-slide-to=\"0\" class=\"active\"></li>\n      <li data-target=\"#main-slider\" data-slide-to=\"1\"></li>\n      <li data-target=\"#main-slider\" data-slide-to=\"2\"></li>\n    </ol>\n    <div class=\"carousel-inner\">\n      <div\n        class=\"item active\"style=\"background-image: url(/assets/images/slider/bg1.jpg)\">\n        <div id=\"car-content\" class=\"container\">\n          <div class=\"row slide-margin\">\n            <div class=\"col-sm-12\">\n              <div class=\"carousel-content\">\n                <h1 id=\"cloud\">\n                  Welcome to\n                  <mat-icon id=\"cloud\" class=\"material-icons\">cloud_queue</mat-icon> API DEMO\n                </h1>\n                <h2 id=\"cloud\">\n                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed\n                  diam nonummy nibh euismod tincidunt laoreet\n                </h2>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--/.item-->\n\n      <div class=\"item\" style=\"background-image: url(/assets/images/slider/bg2.jpg)\">\n        <div  id=\"car-content\" class=\"container\">\n          <div class=\"row slide-margin\">\n            <div class=\"col-sm-12\">\n              <div  class=\"carousel-content\">\n                <h1 id=\"cloud\">Typi non habent claritatem insitam</h1>\n                <h2 id=\"cloud\">\n                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed\n                  diam nonummy nibh euismod tincidunt laoreet\n                </h2>\n                <!-- <a class=\"btn-slide\" href=\"about-us.html\">Read More</a> -->\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--/.item-->\n\n      <div class=\"item\" style=\"background-image: url(/assets/images/slider/bg3.jpg)\">\n        <div id=\"car-content\" class=\"container\">\n          <div class=\"row slide-margin\">\n            <div class=\"col-sm-12\">\n              <div class=\"carousel-content\">\n                <h1 id=\"cloud\">Mirum est notare quam littera gothica</h1>\n                <h2 id=\"cloud\">\n                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed\n                  diam nonummy nibh euismod tincidunt laoreet\n                </h2>\n                <!-- <a class=\"btn-slide\" href=\"about-us.html\">Read More</a> -->\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <!--/.item-->\n    </div>\n    <!--/.carousel-inner-->\n  </div>\n  <!--/.carousel-->\n  <a class=\"prev hidden-xs\" href=\"#main-slider\" data-slide=\"prev\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>\n  <a class=\"next hidden-xs\" href=\"#main-slider\" data-slide=\"next\">\n    <i class=\"fa fa-chevron-right\"></i>\n  </a>\n</section>\n<!--/#main-slider-->\n\n<div class=\"pink-border\"></div>\n<section id=\"feature\">\n  <div class=\"container\">\n    <div class=\"center\">\n      <h2>Featured Services</h2>\n      <p class=\"lead\">\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio\n        sed eros tristique bibendum. Nunc quis semper sem.<br />\n        Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.\n      </p>\n    </div>\n    <div class=\"row\">\n      <div class=\"features\">\n        <div class=\"col-md-6 col-sm-6\">\n          <div class=\"feature-wrap\">\n            <i class=\"fa fa-desktop\"></i>\n            <h2><a class=\"employee\" mat-button isRoundButton=\"true\" routerLink=\"/employees\">Employees</a></h2>\n            <h3>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non\n              odio sed eros tristique.\n            </h3>\n          </div>\n        </div>\n        <!--/.col-md-4-->\n\n        <div class=\"col-md-6 col-sm-6\">\n          <div class=\"feature-wrap\">\n            <i class=\"fa fa-cogs\"></i>\n            <h2><a class=\"position\" mat-button isRoundButton=\"true\" routerLink=\"/positions\">Positions</a></h2>\n            <h3>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non\n              odio sed eros tristique.\n            </h3>\n          </div>\n        </div>\n        <!--/.col-md-4-->\n\n        <!-- <div class=\"col-md-4 col-sm-6\">\n                <div class=\"feature-wrap\"> <i class=\"fa fa-rocket\"></i>\n                  <h2>Brand &amp; Identity</h2>\n                  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed eros tristique.</h3>\n                </div>\n              </div> -->\n        <!--/.col-md-4-->\n      </div>\n      <!--/.services-->\n    </div>\n    <!--/.row-->\n  </div>\n  <!--/.container-->\n</section>\n<!--/#feature-->\n"
 
 /***/ }),
 
@@ -96,7 +96,7 @@ module.exports = "<section id=\"main-slider\" class=\"no-margin\">\n  <div class
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header id=\"header\">\n    <nav class=\"navbar navbar-inverse\" role=\"banner\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button\n            type=\"button\"\n            class=\"navbar-toggle\"\n            data-toggle=\"collapse\"\n            data-target=\".navbar-collapse\"\n          >\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"index.html\"\n            ><i class=\"fa fa-cloud\"></i> Ania M. Pienio (API Demo)\n          </a>\n        </div>\n        <div class=\"collapse navbar-collapse navbar-right\">\n          <ul class=\"nav navbar-nav\">\n            <li routerLinkActive=\"active\"><a routerLink=\"/home\">Home</a></li>\n            <li routerLinkActive=\"active\">\n              <a routerLink=\"/employees\">Employees</a>\n            </li>\n            <li routerLinkActive=\"active\">\n              <a routerLink=\"/positions\">Positions</a>\n            </li>\n          </ul>\n        </div>\n      </div>\n      <!--/.container-->\n    </nav>\n    <!--/nav-->\n  </header>\n"
+module.exports = "<header id=\"header\">\n  <nav class=\"navbar navbar-inverse\" role=\"banner\">\n    <div class=\"container\">\n      <div class=\"navbar-header\">\n        <button\n          type=\"button\"\n          class=\"navbar-toggle\"\n          data-toggle=\"collapse\"\n          data-target=\".navbar-collapse\"\n        >\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n        <a class=\"navbar-brand\" href=\"index.html\">\n          <button class=\"home\" mat-icon-button>   \n              <u> <mat-icon class=\"material-icons\">cloud_queue</mat-icon> &nbsp; DEMO </u> </button>\n         \n        </a>\n      </div>\n      <div class=\"collapse navbar-collapse navbar-right\">\n        <ul class=\"nav navbar-nav\">\n          <!-- <a mat-stroked-button routerlink=\"/home\">Home</a>       -->\n          <li routerLinkActive=\"active\"><a class=\"home\" mat-stroked-button isRoundButton=\"true\" routerLink=\"/home\">Home</a></li>\n          <!-- <a routerLink=\"/home\">Home</a> -->\n          <li routerLinkActive=\"active\">\n            <a class=\"employee\" mat-stroked-button isRoundButton=\"true\" routerLink=\"/employees\">Employees</a>\n            <!-- <a routerLink=\"/employees\">Employees</a> -->\n          </li>\n          <li routerLinkActive=\"active\">\n            <a class=\"position\" mat-stroked-button isRoundButton=\"true\" routerLink=\"/positions\">Positions</a>\n            <!-- <a routerLink=\"/positions\">Positions</a> -->\n          </li>\n        </ul>\n      </div>\n    </div>\n    <!--/.container-->\n  </nav>\n  <!--/nav-->\n</header>\n<!--/header-->\n"
 
 /***/ }),
 
@@ -129,7 +129,7 @@ module.exports = "<div \n  *ngIf=\"position\" \n    class=\"center\">\n    <h2>P
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"center\">\n  <h2>Positions</h2>\n  <p class=\"lead\">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed\n    eros tristique bibendum. Nunc quis semper sem.<br />\n    Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.\n  </p>\n</div>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"table-responsive\">\n        <table class=\"table table-condensed table-hover\">\n          <thead>\n            <tr>\n              <th>Position Title</th>\n              <th>Position Description</th>\n              <th>Salary</th>\n            </tr>\n          </thead>\n\n          <tbody *ngIf=\"positions\">\n            <tr \n              *ngFor=\"let pos of positions\"\n              (click) = \"routeToPosition(pos._id)\"\n            >\n              <td>{{ pos.PositionName }}</td>\n              <td>{{ pos.PositionDescription }}</td>\n              <td>${{ pos.PositionBaseSalary | number: \"5.2\" }}</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <!-- PositionsComponent {{ positions | json }} -->\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"center\">\n  <h2>Positions</h2>\n  <p class=\"lead\">\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non odio sed\n    eros tristique bibendum. Nunc quis semper sem.<br />\n    Morbi libero elit elementum quis faucibus ac, condimentum quis nibh.\n  </p>\n</div>\n\n<table mat-table [dataSource]=\"positions\" class=\"mat-elevation-z8\">\n\n  <!--- Note that these columns can be defined in any order.\n        The actual rendered columns are set as a property on the row definition\" -->\n\n  <!-- Name Column -->\n  <ng-container matColumnDef=\"title\">\n    <th mat-header-cell *matHeaderCellDef> Title </th>\n    <td \n      mat-cell *matCellDef=\"let pos\"\n      (click)=\"routeToPosition(pos._id)\"> \n      {{ pos.PositionName }} </td>\n  </ng-container>\n\n  <!-- Address Column -->\n  <ng-container matColumnDef=\"description\">\n    <th mat-header-cell *matHeaderCellDef> Description </th>\n    <td \n    mat-cell *matCellDef=\"let pos\"\n    (click)=\"routeToPosition(pos._id)\"> \n    {{ pos.PositionDescription }} </td>\n  </ng-container>\n\n  <!-- Phone Column -->\n  <ng-container matColumnDef=\"salary\">\n    <th mat-header-cell *matHeaderCellDef> Salary </th>\n    <td \n      mat-cell *matCellDef=\"let pos\"\n      (click)=\"routeToPosition(pos._id)\"> \n     ${{ pos.PositionBaseSalary | number: \"5.2\" }} </td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: columnsToDisplay;\"></tr>\n</table>\n<mat-paginator [length]=\"positions.length\">\n</mat-paginator>\n"
 
 /***/ }),
 
@@ -195,7 +195,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".myButton {\r\n  height: 50px;\r\n  font-size: 40px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osZUFBZTtBQUNqQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm15QnV0dG9uIHtcclxuICBoZWlnaHQ6IDUwcHg7XHJcbiAgZm9udC1zaXplOiA0MHB4O1xyXG59XHJcbiJdfQ== */"
+module.exports = ".myButton {\r\n  height: 50px;\r\n  font-size: 40px;\r\n}\r\n\r\n.pink-border {\r\n  height: 1em;\r\n  background-color: deeppink;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osZUFBZTtBQUNqQjs7QUFFQTtFQUNFLFdBQVc7RUFDWCwwQkFBMEI7QUFDNUIiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5teUJ1dHRvbiB7XHJcbiAgaGVpZ2h0OiA1MHB4O1xyXG4gIGZvbnQtc2l6ZTogNDBweDtcclxufVxyXG5cclxuLnBpbmstYm9yZGVyIHtcclxuICBoZWlnaHQ6IDFlbTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBkZWVwcGluaztcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -211,16 +211,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/*********************************************************************************
-* WEB422 – Assignment 6
-* I declare that this assignment is my own work in accordance with Seneca Academic Policy.
-* No part of this assignment has been copied manually or electronically from any other source
-* (including web sites) or distributed to other students.
-*
-* Name: Ania M. Pienio Student ID: 041780073 Date: August 2, 2019
-*
-*
-********************************************************************************/
 
 
 var AppComponent = /** @class */ (function () {
@@ -269,6 +259,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _employee_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./employee.service */ "./src/app/employee.service.ts");
 /* harmony import */ var _employee_detail_employee_detail_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./employee-detail/employee-detail.component */ "./src/app/employee-detail/employee-detail.component.ts");
 /* harmony import */ var _position_detail_position_detail_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./position-detail/position-detail.component */ "./src/app/position-detail/position-detail.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm5/table.es5.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm5/icon.es5.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/paginator */ "./node_modules/@angular/material/esm5/paginator.es5.js");
 
 
 
@@ -280,6 +276,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+// Material
 
 
 
@@ -308,10 +312,26 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_18__["BrowserAnimationsModule"],
+                _angular_material_table__WEBPACK_IMPORTED_MODULE_19__["MatTableModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_20__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_20__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_20__["MatInputModule"],
+                _angular_material_icon__WEBPACK_IMPORTED_MODULE_21__["MatIconModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_22__["MatButtonModule"],
+                _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MatPaginatorModule"]
             ],
             providers: [_position_service__WEBPACK_IMPORTED_MODULE_14__["PositionService"], _employee_service__WEBPACK_IMPORTED_MODULE_15__["EmployeeService"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]],
+            exports: [
+                _angular_material__WEBPACK_IMPORTED_MODULE_20__["MatSortModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_20__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_20__["MatInputModule"],
+                _angular_material_icon__WEBPACK_IMPORTED_MODULE_21__["MatIconModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_22__["MatButtonModule"],
+                _angular_material_paginator__WEBPACK_IMPORTED_MODULE_23__["MatPaginatorModule"]
+            ]
         })
     ], AppModule);
     return AppModule;
@@ -416,12 +436,8 @@ var EmployeeDetailComponent = /** @class */ (function () {
         }); // end of subscription
         // [2.] subscribe to getEmployee(id)
         this.employeeSub = this.emp_m.getEmployee(this.id).subscribe(function (emp) {
-            console.log(emp[0]);
-            console.log(emp[1]);
-            console.log(emp[0].HireDate);
             _this.employee = emp[0];
             _this.hireDate = lodash__WEBPACK_IMPORTED_MODULE_5__["cloneDeep"](_this.employee.HireDate);
-            console.log(_this.hireDate);
         }); // end of subscribe
         // [3.] subscribe to getPositions() 
         this.getPositionsSub = this.pos_m.getPositions().subscribe(function (pos) {
@@ -530,7 +546,7 @@ var EmployeeService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\r\n  margin-top: 40px;\r\n}\r\n.table-responsive {\r\n  margin-bottom: 60px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW1wbG95ZWVzL2VtcGxveWVlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxtQkFBbUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC9lbXBsb3llZXMvZW1wbG95ZWVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyIHtcclxuICBtYXJnaW4tdG9wOiA0MHB4O1xyXG59XHJcbi50YWJsZS1yZXNwb25zaXZlIHtcclxuICBtYXJnaW4tYm90dG9tOiA2MHB4O1xyXG59XHJcbiJdfQ== */"
+module.exports = ".center {\r\n  margin-top: 40px;\r\n}\r\n.table-responsive {\r\n  margin-bottom: 60px;\r\n}\r\ntable {\r\n  width: 100%;\r\n}\r\nth.mat-sort-header-sorted {\r\n  color: black;\r\n}\r\n.mat-form-field {\r\n  padding: 1em;\r\n  padding-left: 7em;\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\ntd:hover {\r\n  cursor: pointer;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW1wbG95ZWVzL2VtcGxveWVlcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxtQkFBbUI7QUFDckI7QUFFQTtFQUNFLFdBQVc7QUFDYjtBQUVBO0VBQ0UsWUFBWTtBQUNkO0FBRUE7RUFDRSxZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLGVBQWU7RUFDZixXQUFXO0FBQ2I7QUFFQTtFQUNFLGVBQWU7QUFDakIiLCJmaWxlIjoic3JjL2FwcC9lbXBsb3llZXMvZW1wbG95ZWVzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyIHtcclxuICBtYXJnaW4tdG9wOiA0MHB4O1xyXG59XHJcbi50YWJsZS1yZXNwb25zaXZlIHtcclxuICBtYXJnaW4tYm90dG9tOiA2MHB4O1xyXG59XHJcblxyXG50YWJsZSB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbnRoLm1hdC1zb3J0LWhlYWRlci1zb3J0ZWQge1xyXG4gIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLm1hdC1mb3JtLWZpZWxkIHtcclxuICBwYWRkaW5nOiAxZW07XHJcbiAgcGFkZGluZy1sZWZ0OiA3ZW07XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50ZDpob3ZlciB7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -561,30 +577,79 @@ var EmployeesComponent = /** @class */ (function () {
         this.rt = rt;
         // data
         this.employees = [];
-        this.filteredEmployees = [];
+        this.filtered = [];
+        this.final = [];
+        this.curChunk = 1;
+        this.sizeChunk = 10;
+        this.numEmployees = 0;
         // error state
         this.loadingError = false;
         this.loading = false;
+        // material
+        this.columnsToDisplay = ['FullName', 'AddressStreet', 'PositionName', 'PhoneNum', 'HireDate'];
     }
     EmployeesComponent.prototype.routeToEmployeeDetails = function (id) {
         this.rt.navigate(['/employee', id]);
     };
-    EmployeesComponent.prototype.onEmployeeSearchKeyUP = function (e) {
-        var _this = this;
-        this.str = e.target.value;
-        this.filteredEmployees = lodash__WEBPACK_IMPORTED_MODULE_4__["filter"](this.employees, function (emp) {
-            _this.pattern = new RegExp(_this.str, 'i');
-            return (_this.pattern.test(emp.FirstName) || _this.pattern.test(emp.LastName) || _this.pattern.test(emp.Position.PositionName));
+    EmployeesComponent.prototype.sortData = function (sort) {
+        var data = this.employees.slice();
+        if (!sort.active || sort.direction === '') {
+            this.filtered = data;
+            return;
+        }
+        this.filtered = data.sort(function (a, b) {
+            var isAsc = sort.direction === 'asc';
+            switch (sort.active) {
+                case 'FullName': return compare(a.FirstName, b.FirstName, isAsc);
+                case 'AddressStreet': return compare(a.AddressStreet, b.AddressStreet, isAsc);
+                case 'PhoneNum': return compare(a.PhoneNum, b.PhoneNum, isAsc);
+                case 'HireDate': return compare(a.HireDate, b.HireDate, isAsc);
+                default: return 0;
+            }
         });
-        this.loading = true;
-        setTimeout(function () { _this.loading = false; }, 2000);
-    }; // end keyup  
+        this.showFinal(this.filtered);
+    };
+    EmployeesComponent.prototype.applyFilter = function (filterValue) {
+        this.filtered = lodash__WEBPACK_IMPORTED_MODULE_4__["filter"](this.employees, function (emp) {
+            var pattern = new RegExp(filterValue, 'i');
+            return (pattern.test(emp.FirstName) || pattern.test(emp.LastName) || pattern.test(emp.Position.PositionName));
+        });
+        this.curChunk = 1;
+        this.numEmployees = this.filtered.length;
+        this.showFinal(this.filtered);
+    };
+    EmployeesComponent.prototype.pageChanged = function (event) {
+        // going forward
+        if (event.pageIndex > (this.curChunk - 1)) {
+            this.curChunk++;
+            // going backward  
+        }
+        else if (event.pageIndex < (this.curChunk - 1)) {
+            this.curChunk--;
+        }
+        else {
+            // this.curChunk => event.pageIndex;
+        }
+        this.sizeChunk = event.pageSize;
+        this.showFinal(this.filtered);
+        console.log(event);
+    };
+    EmployeesComponent.prototype.showFinal = function (list) {
+        var arry = lodash__WEBPACK_IMPORTED_MODULE_4__["chunk"](list, this.sizeChunk);
+        console.log("chunked employees: ");
+        console.log(arry);
+        console.log("Now Serving: ");
+        console.log(this.curChunk - 1);
+        this.final = lodash__WEBPACK_IMPORTED_MODULE_4__["cloneDeep"](arry[this.curChunk - 1]);
+    };
     EmployeesComponent.prototype.ngOnInit = function () {
         var _this = this;
         // [1.] subscribe to getEmployees()   
         this.getEmployeesSub = this.m.getEmployees().subscribe(function (employees) {
             _this.employees = employees;
-            _this.filteredEmployees = employees;
+            _this.filtered = employees;
+            _this.numEmployees = employees.length;
+            _this.showFinal(_this.filtered);
         }, function (error) {
             if (error) {
                 _this.loadingError = true;
@@ -611,6 +676,9 @@ var EmployeesComponent = /** @class */ (function () {
     return EmployeesComponent;
 }()); // end of Component
 
+function compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
 
 
 /***/ }),
@@ -622,7 +690,7 @@ var EmployeesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "#footer {\r\n    height: 55em !important;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksdUJBQXVCO0FBQzNCIiwiZmlsZSI6InNyYy9hcHAvZm9vdGVyL2Zvb3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2Zvb3RlciB7XHJcbiAgICBoZWlnaHQ6IDU1ZW0gIWltcG9ydGFudDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -666,7 +734,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "section {\r\n  padding: 70px 0;\r\n}\r\n\r\n.no-margin {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsU0FBUztFQUNULFVBQVU7QUFDWiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsic2VjdGlvbiB7XHJcbiAgcGFkZGluZzogNzBweCAwO1xyXG59XHJcblxyXG4ubm8tbWFyZ2luIHtcclxuICBtYXJnaW46IDA7XHJcbiAgcGFkZGluZzogMDtcclxufVxyXG4iXX0= */"
+module.exports = "section {\r\n  padding: 70px 0;\r\n}\r\n\r\n.no-margin {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n.pink-border {\r\n  height: 1em;\r\n  background-color: deeppink;\r\n}\r\n\r\n.position,\r\n.employee {\r\n  font-size: 1em;\r\n}\r\n\r\n#cloud {\r\n  color: white !important;\r\n}\r\n\r\n#car-content{\r\n  background-color: rgba(0, 0, 0, 0.473);\r\n  height: 100%;\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsU0FBUztFQUNULFVBQVU7QUFDWjs7QUFFQTtFQUNFLFdBQVc7RUFDWCwwQkFBMEI7QUFDNUI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLHNDQUFzQztFQUN0QyxZQUFZO0FBQ2QiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInNlY3Rpb24ge1xyXG4gIHBhZGRpbmc6IDcwcHggMDtcclxufVxyXG5cclxuLm5vLW1hcmdpbiB7XHJcbiAgbWFyZ2luOiAwO1xyXG4gIHBhZGRpbmc6IDA7XHJcbn1cclxuXHJcbi5waW5rLWJvcmRlciB7XHJcbiAgaGVpZ2h0OiAxZW07XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogZGVlcHBpbms7XHJcbn1cclxuXHJcbi5wb3NpdGlvbixcclxuLmVtcGxveWVlIHtcclxuICBmb250LXNpemU6IDFlbTtcclxufVxyXG5cclxuI2Nsb3VkIHtcclxuICBjb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuI2Nhci1jb250ZW50e1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC40NzMpO1xyXG4gIGhlaWdodDogMTAwJTtcclxufVxyXG5cclxuIl19 */"
 
 /***/ }),
 
@@ -710,7 +778,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25hdi9uYXYuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = ".home {\r\n    color: deeppink !important; \r\n    font-size: 1.2em !important; \r\n}\r\n\r\n.employee {\r\n    color: rgb(120, 160, 170) !important;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.position {\r\n    color:  rgb(120, 160, 170) !important;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.mat-icon{\r\n    font-size: 1.3em !important;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmF2L25hdi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMEJBQTBCO0lBQzFCLDJCQUEyQjtBQUMvQjs7QUFFQTtJQUNJLG9DQUFvQztJQUNwQyxnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxxQ0FBcUM7SUFDckMsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksMkJBQTJCO0FBQy9CIiwiZmlsZSI6InNyYy9hcHAvbmF2L25hdi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhvbWUge1xyXG4gICAgY29sb3I6IGRlZXBwaW5rICFpbXBvcnRhbnQ7IFxyXG4gICAgZm9udC1zaXplOiAxLjJlbSAhaW1wb3J0YW50OyBcclxufVxyXG5cclxuLmVtcGxveWVlIHtcclxuICAgIGNvbG9yOiByZ2IoMTIwLCAxNjAsIDE3MCkgIWltcG9ydGFudDtcclxuICAgIGZvbnQtc2l6ZTogMS4yZW07XHJcbn1cclxuXHJcbi5wb3NpdGlvbiB7XHJcbiAgICBjb2xvcjogIHJnYigxMjAsIDE2MCwgMTcwKSAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1zaXplOiAxLjJlbTtcclxufVxyXG5cclxuLm1hdC1pY29ue1xyXG4gICAgZm9udC1zaXplOiAxLjNlbSAhaW1wb3J0YW50O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -837,7 +905,6 @@ var PositionDetailComponent = /** @class */ (function () {
         // [2.] subscribe to getPosition(id)
         this.positionSub = this.pos_m.getPosition(this.pid).subscribe(function (pos) {
             _this.position = pos[0];
-            console.log(pos);
         }); // end of subcribe
     }; // end of onInit
     PositionDetailComponent.prototype.onSubmit = function (fp) {
@@ -940,7 +1007,7 @@ var PositionService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\r\n  margin-top: 40px;\r\n}\r\n.table-responsive {\r\n  margin-bottom: 60px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zaXRpb25zL3Bvc2l0aW9ucy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxtQkFBbUI7QUFDckIiLCJmaWxlIjoic3JjL2FwcC9wb3NpdGlvbnMvcG9zaXRpb25zLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyIHtcclxuICBtYXJnaW4tdG9wOiA0MHB4O1xyXG59XHJcbi50YWJsZS1yZXNwb25zaXZlIHtcclxuICBtYXJnaW4tYm90dG9tOiA2MHB4O1xyXG59XHJcbiJdfQ== */"
+module.exports = ".center {\r\n  margin-top: 40px;\r\n}\r\n.table-responsive {\r\n  margin-bottom: 60px;\r\n}\r\ntable {\r\n  width: 100%;\r\n}\r\n.spacer {\r\n  height: 7em;\r\n}\r\ntd:hover {\r\n  cursor: pointer;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zaXRpb25zL3Bvc2l0aW9ucy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0FBQ2xCO0FBQ0E7RUFDRSxtQkFBbUI7QUFDckI7QUFFQTtFQUNFLFdBQVc7QUFDYjtBQUVBO0VBQ0UsV0FBVztBQUNiO0FBRUE7RUFDRSxlQUFlO0FBQ2pCIiwiZmlsZSI6InNyYy9hcHAvcG9zaXRpb25zL3Bvc2l0aW9ucy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlciB7XHJcbiAgbWFyZ2luLXRvcDogNDBweDtcclxufVxyXG4udGFibGUtcmVzcG9uc2l2ZSB7XHJcbiAgbWFyZ2luLWJvdHRvbTogNjBweDtcclxufVxyXG5cclxudGFibGUge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4uc3BhY2VyIHtcclxuICBoZWlnaHQ6IDdlbTtcclxufVxyXG5cclxudGQ6aG92ZXIge1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -970,6 +1037,8 @@ var PositionsComponent = /** @class */ (function () {
         this.positions = [];
         // error state
         this.loadingError = false;
+        // material
+        this.columnsToDisplay = ['title', 'description', 'salary'];
     }
     PositionsComponent.prototype.routeToPosition = function (pid) {
         this.rt.navigate(['/position', pid]);
