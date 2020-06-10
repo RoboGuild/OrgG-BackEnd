@@ -25,6 +25,10 @@ app.use((req, res) => {
     res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
+app.get("/awake", (req, res) => {
+  res.json({"message": "awake"});
+});
+
 // Start the server
 app.listen(HTTP_PORT, function(){
     console.log("Server listening on port: " + HTTP_PORT);
