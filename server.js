@@ -21,7 +21,7 @@ var HTTP_PORT = process.env.PORT || 8080;
 app.use(express.static("public")); 
 
 
-app.get("/awake", (req, res) => {
+app.get("awake", (req, res) => {
   res.json({"message": "awake"});
 });
 
