@@ -20,13 +20,14 @@ var HTTP_PORT = process.env.PORT || 8080;
 // setup the static folder 
 app.use(express.static("public")); 
 
-// handle "404" errors
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname + "/public/index.html"));
-});
 
 app.get("/awake", (req, res) => {
   res.json({"message": "awake"});
+});
+
+// handle "404" errors
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
 // Start the server
